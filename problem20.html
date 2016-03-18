@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 20</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+	</head>
+	<body>
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 20</h1>
+	    		<h3>Escribir un programa que diga error si se inserta una consonante y si es vocal mostrarla.
+	    		</h3>
+	    	</hgroup>
+	    </header>
+	    <section>
+	    	<article>
+	    		<h4>Especifique un número:</h4>	    		
+	    		<input type="text" id="letra" placeholder="Teclee una letra" autofocus/><br>
+	    		<input type="button" value="Evaluar letra" onclick="evaluarLetra()">
+	        </article>	
+	    	<article>
+	    		<br>
+	    		<p id="salida"></p>	
+	        </article>
+	    </section>
+	    <script>
+	    	function evaluarLetra(){
+
+	    		var letra = document.getElementById("letra").value;
+	    		var text;
+
+	    		switch(letra){
+	    			case "a": case "A":
+	    			case "e": case "E":
+	    			case "i": case "I":
+	    			case "o": case "O":
+	    			case "u": case "U":
+	    				text = letra;
+	    				break;
+	    			default:
+	    				text = "Error";
+	    				break;
+	    		}
+	    	
+	    		document.getElementById("salida").innerHTML = text;
+	    	}
+	    	
+
+	    	function cambiarColorFondo(){
+	    		document.getElementsByTagName("body")[0].style.backgroundColor = "#1F1C71";
+	    	}
+	    </script>
+	</body>
+</html>

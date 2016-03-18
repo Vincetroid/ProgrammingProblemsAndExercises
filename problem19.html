@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 19</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+		<style type="text/css">nav:hover { color:#1F1C71; }</style>
+	</head>
+	<body>
+		<nav id="color-fondo" onclick="cambiarColorFondo()" style="float:right; cursor:pointer;">Azul</nav>
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 19</h1>
+	    		<h3>Escribir un programa usando solo un <span class="tipografia-codigo">for</span> para producir la media piramide de asteriscos del programa anterior.
+	    		</h3>
+	    	</hgroup>
+	    </header>
+	    <section>	
+	    	<article>
+	    		<br>
+	    		<p id="piramide"></p>	
+	        </article>
+	    </section>
+	    <script>
+	    	var pir = "";
+	    	var tam = 10;
+	    	var j = 1;
+
+	    	//For para las filas, while es para las columnas por así decirlo
+	    	for (var i = 1; i <= tam; i++) {
+	    		j = 1;
+	    		while(j <= i){
+	    			pir += "*";
+	    			j++;
+	    		}
+	    		pir += "<br>";
+	    	};
+	    	
+	    	document.getElementById("piramide").innerHTML = pir;
+	    	
+
+	    	function cambiarColorFondo(){
+	    		document.getElementsByTagName("body")[0].style.backgroundColor = "#1F1C71";
+	    	}
+	    </script>
+	</body>
+</html>

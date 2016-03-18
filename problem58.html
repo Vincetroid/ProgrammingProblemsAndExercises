@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 58</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+	</head>
+	<body>
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 58</h1>
+	    		<h3>Conjetura de Collatz de dos números con su longitud. Asimismo el de mayor y menor longitud.
+	    		</h3>
+	    	</hgroup>
+	    </header>
+	    <section>
+	        <article>
+	        	<input type="number" min="0" placeholder="Núm. uno" id="numUno" onchange="aplicarAlgoritmoNumUno(),mayorMenorLongitud()" autofocus>
+	        	<input type="number" min="0" placeholder="Núm. dos" id="numDos" onchange="aplicarAlgoritmoNumDos(),mayorMenorLongitud()">
+	        </article>
+	    	<article>
+	    		<br>
+	    		<h4>Salida</h4>
+	            <p></p>
+	            <p></p>
+	        </article>
+	    </section>
+	    <script>
+		function mayorMenorLongitud(){
+		    if(aplicarAlgoritmoNumUno() > aplicarAlgoritmoNumDos()){
+			   	document.getElementsByTagName("p")[0].innerHTML += " Mayor";
+			   	document.getElementsByTagName("p")[1].innerHTML += " Menor";
+			}else if(aplicarAlgoritmoNumUno() < aplicarAlgoritmoNumDos()){
+				document.getElementsByTagName("p")[0].innerHTML += " Menor";
+			  	document.getElementsByTagName("p")[1].innerHTML += " Mayor";
+			}else{
+				document.getElementsByTagName("p")[0].innerHTML += " Igual";
+			  	document.getElementsByTagName("p")[1].innerHTML += " Igual";
+			}
+		}
+
+	    function aplicarAlgoritmoNumUno(){
+		    var num1 = Number(document.getElementById("numUno").value);
+	    	var textUno = num1 + ": ";
+	    	var cont1 = 1;
+
+	    	if(num1 == 0){
+	    		//alert("Introduzca numeros naturales");
+	    	}else{
+	    		do{
+			    	if(num1 % 2 == 0){
+			    		num1 = num1 / 2;
+			    		textUno += num1 + " ";
+			    		cont1++;
+			    	} else if(num1 % 2 != 0) {
+			    		num1 = 3 * num1 + 1;
+			    		textUno += num1 + " ";
+			    		cont1++;
+			    	}
+		    	}while(num1 != 1);
+	    	}
+
+			document.getElementsByTagName("p")[0].innerHTML = textUno + "     Longitud: " + cont1;
+
+			return cont1;
+	    }
+
+	    function aplicarAlgoritmoNumDos(){
+		    var num2 = Number(document.getElementById("numDos").value);
+	    	var textDos = num2 + ": ";
+	    	var cont2 = 1;
+
+		    if(num2 == 0){
+	    		//lert("Introduzca numeros naturales");
+	    	}else{
+	    		do{
+			    	if(num2 % 2 == 0){
+			    		num2 = num2 / 2;
+			    		textDos += num2 + " ";
+			    		cont2++;
+			    	} else if(num2 % 2 != 0) {
+			    		num2 = 3 * num2 + 1;
+			    		textDos += num2 + " ";
+			    		cont2++;
+			    	}
+			    }while(num2 != 1);	
+	    	}
+
+			document.getElementsByTagName("p")[1].innerHTML = textDos + "     Longitud: " + cont2;
+
+			return cont2;
+	    }	    	
+	    
+	    </script>
+	</body>
+</html> 

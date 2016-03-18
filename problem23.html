@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 23</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+	</head>
+	<body>
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 23</h1>
+	    		<h3>Escribe un programa que calcula la suma 1 + 1/2 + 1/3 + ... + 1\n para cualquier número entero positivo.</h3>
+	    	</hgroup>
+	    </header>
+	    <section>
+	    	<article>
+	    		<h4>Entrada</h4>  		
+	    		<input type="number" id="num1" placeholder="Número entero positivo" autofocus onkeyup="main()" onchange="main()"/><br>
+	        </article>	
+	    	<article>
+	    		<br>
+	    		<h4>Salida</h4>
+	    		<p id="salida"></p>
+	        </article>
+	    </section>
+	    <script>
+	    	function main(){
+	    		var numero1 = document.getElementById('num1').value;
+
+		    	document.getElementById("salida").innerHTML = suma(numero1).toFixed(6);
+		    }
+
+	    	function suma(n){
+	    		if(n == 1){
+	    			return 1;
+	    		} else {
+	    			return (1 / n) + suma(n - 1);
+	    		}
+	    	}
+	    </script>
+	</body>
+</html>

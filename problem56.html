@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 56</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+	</head>
+	<body>
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 56</h1>
+	    		<h3>Obtener el Máximo Común Divisor de 2 números con el método de Euclides.
+	    		</h3>
+	    	</hgroup>
+	    </header>
+	    <section>	
+	        <article>
+	        	<input type="number" min="0" placeholder="Núm. uno" id="numUno" autofocus>
+	        	<input type="number" min="0" placeholder="Núm. dos" id="numDos">
+	        	<input type="button" id="boton" value="MCD" onclick="aplicarAlgoritmo()"/>
+	        </article>
+	    	<article>
+	    		<br>
+	    		<h4>Salida</h4>
+	            <p></p>
+	        </article>
+	    </section>
+	    <script>
+
+	    function aplicarAlgoritmo(){
+	    	var text = "";
+		    var cociente = 0, residuo = 0, mcd = 0;
+		    var x = Number(document.getElementById("numUno").value);
+		    var y = Number(document.getElementById("numDos").value);
+
+		    if(x > y){
+		    	var dividendo = x;
+		    	var divisor = y;
+		    	do{
+		    		cociente = Math.floor(dividendo / divisor);
+		    		residuo = dividendo % divisor;
+		    		if(residuo == 0){
+		    			mcd = divisor;
+		    		}else{
+		    			dividendo = divisor;
+		    			divisor = residuo;
+		    		}
+		    	}while(residuo != 0);
+		    }else{
+		    	var divisor = x;
+		    	var dividendo = y;
+		    	do{
+		    		cociente = Math.floor(dividendo / divisor);
+		    		residuo = dividendo % divisor;
+		    		if(residuo == 0){
+		    			mcd = divisor;
+		    		}else{
+		    			dividendo = divisor;
+		    			divisor = residuo;
+		    		}
+		    	}while(residuo != 0);
+		    }
+			document.getElementsByTagName("p")[0].innerHTML = mcd;
+	    }
+	    
+	    </script>
+	</body>
+</html> 

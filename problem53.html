@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 53</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+	</head>
+	<body>
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 53</h1>
+	    		<h3>Imprimir los números del 1 al 100. Pero en caso de números múltiplos de 3 imprimir "Coca", en caso de múltiplos de 5 desplegar "Cola" y en caso de múltiplos de ambos mostrar "Coca-Cola". 
+	    		</h3>
+	    	</hgroup>
+	    </header>
+	    <section>	
+	    	<article>
+	    		<br>
+	    		<h4>Salida</h4>
+	            <p></p>
+	        </article>
+	    </section>
+	    <script>
+	    
+	    var i;
+	    var text = "";
+
+		for(i = 1; i <= 100; i++){
+			if(i % 5 == 0 && i % 3 == 0){
+				text += "Coca-Cola" + "<br>"; 
+			} else if(i % 3 == 0){
+				text += "Coca" + "<br>"; 
+			} else if(i % 5 == 0){
+				text += "Cola" + "<br>"; 
+			} else{
+				text += i + "<br>"; 				
+			}
+		}
+
+		document.getElementsByTagName("p")[0].innerHTML = text;
+	    </script>
+	</body>
+</html> 
