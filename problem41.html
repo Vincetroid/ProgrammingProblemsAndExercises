@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 41</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+	</head>
+	<body>
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 41</h1>
+	    		<h3>Sumar los elementos de un arreglo.
+	    		</h3>
+	    	</hgroup>
+	    </header>
+	    <section>
+	    	<article>
+	    		<h4>Entrada</h4>
+	    		<input type="number" id="n1" placeholder="Valor 1" min="0" max="100" autofocus /><br>
+	    		<input type="number" id="n2" placeholder="Valor 2" min="0" max="100" /><br>
+	    		<input type="number" id="n3" placeholder="Valor 3" min="0" max="100" /><br>
+	    		<input type="number" id="n4" placeholder="Valor 4" min="0" max="100" /><br>
+	    		<input type="number" id="n5" placeholder="Valor 5" min="0" max="100" /><br>
+	    		<input type="button" id="boton" value="Calcular" onclick="calcular()" />
+	    	</article>	
+	    	<article>
+	    		<br>
+	    		<h4>Salida</h4>
+	            <p></p>
+	        </article>
+	    </section>
+	    <script>
+	    function calcular(){
+	    	var arr = [];
+
+		    arr[0] = Number(document.getElementById("n1").value);
+		    arr[1] = Number(document.getElementById("n2").value);
+		    arr[2] = Number(document.getElementById("n3").value);
+		    arr[3] = Number(document.getElementById("n4").value);
+		    arr[4] = Number(document.getElementById("n5").value);
+
+		    var sum = 0;
+		    var i = 0;
+		    var lon = arr.length;
+
+		    while(i < lon){
+		    	sum += arr[i];
+		    	i++;
+		    }
+
+		    document.getElementsByTagName("p")[0].innerHTML = sum;
+	    }
+
+	    </script>
+	</body>
+</html>

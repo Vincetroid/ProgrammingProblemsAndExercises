@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 33</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+	</head>
+	<body>
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 33</h1>
+	    		<h3>Implementación del algoritmo Trabb Pardo - Knuth. Consiste en preguntar por 11 números, ordenarlos inversamente, evaluar cada uno con una función que aplique una operación, por ejemplo una raíz cuadrada, el valor devuelto se compara si sobrepasa un límite arbitrario, como 100 entero positivo, avisar el desbordamiento y si no mostrar el resultado. 
+	    		</h3>
+	    	</hgroup>
+	    </header>
+	    <section>
+	    	<article>
+	    		<h4>Entrada de 11 números</h4>
+	    		<input type="number" id="numero1" placeholder="Primero" autofocus /><br>
+	    		<input type="number" id="numero2" placeholder="Segundo" /><br>
+	    		<input type="number" id="numero3" placeholder="Tercero" /><br>
+	    		<input type="number" id="numero4" placeholder="Cuarto" /><br>
+	    		<input type="number" id="numero5" placeholder="Quinto" /><br>
+	    		<input type="number" id="numero6" placeholder="Sexto" /><br>
+	    		<input type="number" id="numero7" placeholder="Séptimo" /><br>
+	    		<input type="number" id="numero8" placeholder="Octavo" /><br>
+	    		<input type="number" id="numero9" placeholder="Noveno" /><br>
+	    		<input type="number" id="numero10" placeholder="Décimo" /><br>
+	    		<input type="number" id="numero11" placeholder="Décimo primero" /><br>
+	    		<input type="button" id="boton" value="Operar" onclick="aplicarAlgoritmo()" />
+	    	</article>	
+	    	<article>
+	    		<br>
+	    		<h4>Salida</h4>
+	            <p></p>
+	        </article>
+	    </section>
+	    <script>
+	    function aplicarAlgoritmo(){
+		    var i = 0;
+		    var arr = [];
+		    var res = 0;
+		    var text = "";
+
+		    for (var k = 11; k >= 1; k--) {
+		    	var n = Number(document.getElementById("numero" + k).value);
+		    	arr[i] = n;
+		    	i++;
+		    	
+		    	res = elevarAlCuadrado(n);
+
+		    	if(res > 500)
+		    		text += "Se desbordó<br>";
+		    	else
+		    		text += res + "<br>";
+		    };    
+
+		   	document.getElementsByTagName("p")[0].innerHTML = text;
+		}
+
+		function elevarAlCuadrado(num){
+			num = Math.pow(num, 2);
+			return num;
+		}
+	    </script>
+	</body>
+</html>

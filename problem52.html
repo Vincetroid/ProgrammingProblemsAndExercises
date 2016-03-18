@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 52</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+		<style type="text/css">
+
+		.ancharCeldas tr td{
+			height: 30px;
+			width: 50px;
+			border: solid;
+			text-align: center;
+		}
+		</style>
+	</head>
+	<body>
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 52</h1>
+	    		<h3>Mostrar tabla de kilometraje y de litros con opcion a incrementar y decrementar.
+	    		</h3>
+	    	</hgroup>
+	    </header>
+	    <section>
+	    	<article>
+	    		<br><br>
+	    		<table class="ancharCeldas">
+	    			<tr><td colspan="9" style="border:none;">Litros</td></tr>
+	    			<tr>
+						<td>10</td><td>15</td><td>20</td><td>25</td><td>30</td><td>35</td><td>40</td><td>45</td><td>50</td>
+	    			</tr>
+	    			<tr><td colspan="9" style="border:none;"><input type="button" id="boton" value="-" onclick="Decrementar()"/> <input type="button" id="boton" value="+" onclick="Incrementar()"/></td></tr>
+	    		</table>
+	    		<table class="ancharCeldas">
+	    			<tr><td colspan="9" style="border:none;">Kilómetros</td></tr>
+	    			<tr>
+						<td>10</td><td>20</td><td>30</td><td>40</td><td>50</td><td>60</td><td>70</td><td>80</td><td>90</td>
+	    			</tr>
+	    			<tr><td colspan="9" style="border:none;"><input type="button" id="boton" value="-" onclick="DecrementarKM()"/> <input type="button" id="boton" value="+" onclick="IncrementarKM()"/></td></tr>
+	    		</table>
+	        </article>
+	    </section>
+	    <script>	    
+
+	    var i = 0, j = 11;
+
+		function Incrementar(){
+			if(i >= 0 && i <= 8){ //Si lo revisas ahora checa muy bien la lógica de esta línea
+		    	document.getElementsByTagName("td")[i+=1].style.background = "green";
+		    									   //Aqui						
+			}
+			console.log(i);
+	    }
+
+	    function Decrementar(){
+			if(i >= 1 && i <= 9){//También de esta
+		    	document.getElementsByTagName("td")[i--].style.background = "none";	
+		    									  //y aqui							
+			}
+			console.log(i);
+	    }
+
+	    ////
+
+	    function IncrementarKM(){
+			if(j >= 11 && j <= 19){ //Si lo revisas ahora checa muy bien la lógica de esta línea
+		    	document.getElementsByTagName("td")[j+=1].style.background = "orange";
+		    									   //Aqui						
+			}
+			console.log(j);
+	    }
+
+	    function DecrementarKM(){
+			if(j >= 12 && j <= 20){//También de esta
+		    	document.getElementsByTagName("td")[j--].style.background = "none";	
+		    									  //y aqui							
+			}
+			console.log(j);
+		}
+
+	    </script>
+	</body>
+</html>
+

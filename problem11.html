@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 11</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+	</head>
+	<body>
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 11</h1>
+	    		<h3>Checar y convertir un numero entero del 0 al 999 y convertirlo en palabra.
+	    		</h3>
+	    	</hgroup>
+	    </header>
+	    <section>
+	    	<article>
+	    		<h4>Especifique un número:</h4>
+	    		<form id="form">
+	    			<input type="number" id="num" min="0" max="999" value="0" onclick="mostrarNumero()" style="width:50px; height:20px; text-align:center;"/>
+	    		</form>
+	    	</article>	
+	    	<article>
+	    		<br>
+	            <p></p><!--Aqui se inserta el codigo JS-->
+	        </article>
+	    </section>
+	    <script>
+			
+			function mostrarNumero(){
+			//A continuación se crean los arreglos, objetos y variables que forman los componentes de un patrón 
+				// Array de numeros naturales
+				var nCeroToNueve = ["cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"];
+				// numMulDiez  = objeto de numeros multiplos del 10 al 90
+				var nMulDiez = {diez:"diez", veinte:"veinte", treinta:"treinta", cuarenta:"cuarenta", cincuenta:"cincuenta", 
+								sesenta:"sesenta", setenta:"setenta", ochenta:"ochenta", noventa:"noventa"};
+				// numMulCien  = objeto de numeros multiplos del 100 al 900
+				var nMulCien = {cien:"cien", doscientos:"doscientos", trescientos:"trescientos", cuatrocientos:"cuatrocientos", 
+								quinientos:"quinientos", seiscientos:"seiscientos", setecientos:"setecientos", ochocientos:"ochocientos",
+							    novecientos:"novecientos"};
+				// nOnceToQuince  = objeto de numeros del 11 al 15	
+				var nOnceToQuince = {once:"once", doce:"doce", trece:"trece", catorce:"catorce", quince:"quince"};
+				//Agrega el prefijo Dieci 	
+				var nDieci = {dieci:"dieci"}; 
+				//Agrega el prefijo Veinti 
+				var nVeinti = {veinti:"veinti"};
+				//Agrega la conjuncion y
+				var y = " y ";
+			// Fin de componentes de patrón 
+			
+				var text = "";
+				var numSeleccionadoString = document.getElementById("num").value;
+				var nS = Number(numSeleccionadoString); // nS = numeroSeleccionado convertido a tipo numero
+
+				// Evaluar y asignar un numero del 0 al 9
+				if ((nS >= 0) && (nS <= 9)) {
+					text = nCeroToNueve[nS];
+				} else if (nS == 10 || nS == 20 || nS == 30 || nS == 40 || nS == 50 || nS == 60 || nS == 70 || nS == 80 || nS == 90) {
+					switch(nS){ // Evaluar y asignar un numero multiplo de 10. 10-90
+						case 10:
+							text = nMulDiez.diez;
+							break;
+						case 20:
+							text = nMulDiez.veinte;
+							break;
+						case 30:
+							text = nMulDiez.treinta;
+							break;
+						case 40:
+							text = nMulDiez.cuarenta;
+							break;
+						case 50:
+							text = nMulDiez.cincuenta;
+							break;
+						case 60:
+							text = nMulDiez.sesenta;
+							break;
+						case 70:
+							text = nMulDiez.setenta;
+							break;
+						case 80:
+							text = nMulDiez.ochenta;
+							break;
+						case 90:
+							text = nMulDiez.noventa;
+							break;
+						default:
+							text = "Error en multiplos de 10";
+							break;
+					}
+				} else if (nS == 11 || nS == 12 || nS == 13 || nS == 14 || nS == 15) {
+					switch(nS){ // Evaluar y asignar un numero del 11 al 15
+						case 11:
+							text = nOnceToQuince.once;
+							break;
+						case 12:
+							text = nOnceToQuince.doce;
+							break;
+						case 13:
+							text = nOnceToQuince.trece;
+							break;
+						case 14:
+							text = nOnceToQuince.catorce;
+							break;
+						case 15:
+							text = nOnceToQuince.quince;
+							break;
+						default:
+							text = "Error de 11 a 15";
+							break;
+					}
+				} else if (nS >= 16 && nS <= 19) { // Evaluar y asignar un numero del 16 al 19
+					nS = nS - 10;
+					text = nDieci.dieci + nCeroToNueve[nS];
+				} else if (nS >= 21 && nS <= 29) { // Evaluar asignar un numero del 21 al 29
+					nS = nS - 20;
+					text = nVeinti.veinti + nCeroToNueve[nS]; // Y así sucesivamente como corresponda...
+				} else if (nS >= 31 && nS <= 39) {
+					nS = nS - 30;
+					text = nMulDiez.treinta + y + nCeroToNueve[nS];
+				} else if (nS >= 41 && nS <= 49) {
+					nS = nS - 40;
+					text = nMulDiez.cuarenta + y + nCeroToNueve[nS];
+				} else if (nS >= 51 && nS <= 59) {
+					nS = nS - 50;
+					text = nMulDiez.cincuenta + y + nCeroToNueve[nS];
+				} else if (nS >= 61 && nS <= 69) {
+					nS = nS - 60;
+					text = nMulDiez.sesenta + y + nCeroToNueve[nS];
+				} else if (nS >= 71 && nS <= 79) {
+					nS = nS - 70;
+					text = nMulDiez.setenta + y + nCeroToNueve[nS];
+				} else if (nS >= 81 && nS <= 89) {
+					nS = nS - 80;
+					text = nMulDiez.ochenta + y + nCeroToNueve[nS];
+				} else if (nS >= 91 && nS <= 99) {
+					nS = nS - 90;
+					text = nMulDiez.noventa + y + nCeroToNueve[nS];
+				} else if (nS == 100 || nS == 200 || nS == 300 || nS == 400 || nS == 500 || nS == 600 || nS == 700 || nS == 800 || nS == 900) { // Evaluar y asignar un numero multiplo de 100. 100-900
+					switch(nS){
+						case 100:
+							text = nMulCien.cien;
+							break;
+						case 200:
+							text = nMulCien.doscientos;
+							break;
+						case 300:
+							text = nMulCien.trescientos;
+							break;
+						case 400:
+							text = nMulCien.cuatrocientos;
+							break;
+						case 500:
+							text = nMulCien.quinientos;
+							break;
+						case 600:
+							text = nMulCien.seiscientos;
+							break;
+						case 700:
+							text = nMulCien.setecientos;
+							break;
+						case 800:
+							text = nMulCien.ochocientos;
+							break;
+						case 900:
+							text = nMulDiez.novecientos;
+							break;
+						default:
+							text = "Error en multiplos de 100";
+							break;
+					}
+				} 
+				// Mostrar el numero asignado
+				document.getElementsByTagName("p")[0].innerHTML =  text;
+			}
+
+	    </script>
+	</body>
+</html>

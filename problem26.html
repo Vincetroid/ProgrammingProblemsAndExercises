@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 26</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+	</head>
+	<body>
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 26</h1>
+	    		<h3>Programar que se imprima una piramide completa partiendo de la punta usando dos <span class="tipografia-codigo">for</span>.
+	    		</h3>
+	    	</hgroup>
+	    </header>
+	    <section>	
+	    	<article>
+	    		<h4>Especifique el numero de filas de asteriscos:</h4>
+	    		<input type="number" id="numBase" min="0" max="80" value="0" onclick="desplegarPiramide()" onkeyup="desplegarPiramide()" style="width:50px; text-align:center;" autofocus/>
+	    	</article>
+	    	<article style="background-color:none; width: 100%"><!--Anchura para dar un espacio bien delimitado y poder aplicar el centrado de asteriscos-->
+	    		<br>
+	    		<p id="piramide" style="text-align: center"></p><!--Centrado de asteriscos-->
+	        </article>
+	    </section>
+	    <script>
+	    function desplegarPiramide(){
+
+	    	var ast = "";
+		    var aux = document.getElementById("numBase").value; 
+                         /*
+                         - Determina numero máximo de filas for(var i = 1; i <= aux; i++) TANTOS MOVIMIENTOS ABAJO
+                         - Determina la punta o centro de la pirámide en if(i == con && j == aux) TANTOS MOVS. A LA DERECHA
+                         Nota: es una maravilla que exista esta coincidencia.
+                         - Otra utilidad: en for(var j = 1; j <= ____ ; j++) en esa parte detecté una pequeña resolución: el num asignado a aux es igual a TANTOS MOVIMIENTOS ABAJO más ese mismo pero restado en 1 para obtener el 
+
+                         NUMERO DE ASTERISCOS MAXIMO EN LA ULTIMA FILA = (aux * 2 - 1).
+
+                         Es decir:
+                         Si aux = 1, tendra 1 ast => 0
+                         Si aux = 2, tendra 3 ast => 2 + (2 - 1) = 3  
+                         Si aux = 3, tendra 5 ast => 3 + (3 - 1) = 5 => (3 + 3 - 1) = 5 => (3 * 2 - 1) = 5 => (aux * 2 - 1)
+                         Si aux = 4, tendra 7 ast => 4 + (4 - 1) = 7
+                         Si aux = 5, tendra 9 ast => 5 + (5 - 1) = 9
+                         Si aux = 6, tendra 11 ast => 6 + (6 - 1) = 11*/
+
+            var li = aux; //limite inferior del intervalo de asteriscos
+            var ls = aux; //limite superior del intervalo de asteriscos
+            var con = 1; // inicio de contador que va paralelamente a i para accesar a n fila
+
+            for (var i = 1; i <= aux; i++) { // FILAS
+                for (var j = 1; j <= (aux * 2 - 1); j++) { //Columas por decirlo asi. CADA COLUMNA ES UN ASTERISCO
+                    if(i == con && j == aux){ // Primera fila y ast...
+                        ast += "*";
+                    } else if(i == con && (j >= li && j <= ls)){ // Las demás filas e intervalos...
+                        ast += "*";
+                        // debugger;
+                        // console.log(i);
+                    }
+                } 
+                con++; //incremento al contador para tener acceso a la siguiente fila
+                ast += "<br>"; //salto de línea para llenar la próxima fila de asteriscos
+                li--; //decremento en limite inferior para insertar un asterisco más a la IZQ
+                ls++; //incremento en limite superior para insertar un asterisco más a la DER
+            }
+		    	
+	    	document.getElementById("piramide").innerHTML = ast;
+	    }
+
+        //Nota: var con, i == con - podrían eliminarse pero haciendo esto se introduciria a todas las condiciones sobreimprimiendo los asteriscos.
+	   
+    	//Version anterior por si falla algo actual
+    	// for (var i = 1; i <= 5; i++) { // FILAS
+    	// 	for (var j = 1; j <= 9; j++) { //COL por decirlo asi
+    	// 		if(i == 1 && j == aux){
+    	// 			ast += "*";
+    	// 			debugger;
+    	// 			console.log(i);
+    	// 		} else if(i == 2 && (j >= li && j <= ls)){	
+    	// 			ast += "*";
+    	// 		} else if(i == 3 && (j >= li && j <= ls)){
+    	// 			ast += "*";
+    	// 		} else if(i == 4 && (j >= li && j <= ls)){
+    	// 			ast += "*";
+    	// 		} else if(i == 5 && (j >= li && j <= ls)){
+    	// 			ast += "*";
+    	// 		}
+    	// 	};
+    	// 	ast += "<br>";
+    	// 	li--;
+    	// 	ls++;
+    	// };
+	    
+	    </script>
+	</body>
+</html>

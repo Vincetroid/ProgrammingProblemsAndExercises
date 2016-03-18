@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 44</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+	</head>
+	<body>
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 44</h1>
+	    		<h3>Determinar el rango de elementos de un arreglo.
+	    		</h3>
+	    	</hgroup>
+	    </header>
+	    <section>
+	    	<article>
+	    		<h4>Entrada</h4>
+	    		<input type="number" id="n1" placeholder="Valor 1" min="0" max="100" autofocus /><br>
+	    		<input type="number" id="n2" placeholder="Valor 2" min="0" max="100" /><br>
+	    		<input type="number" id="n3" placeholder="Valor 3" min="0" max="100" /><br>
+	    		<input type="number" id="n4" placeholder="Valor 4" min="0" max="100" /><br>
+	    		<input type="number" id="n5" placeholder="Valor 5" min="0" max="100" /><br>
+	    		<input type="button" id="boton" value="Calcular" onclick="calcular()" />
+	    	</article>	
+	    	<article>
+	    		<br>
+	    		<h4>Salida</h4>
+	            <p></p>
+	        </article>
+	    </section>
+	    <script>
+	   function mayor(a, b, c, d, e){
+	    	var may = 0;
+
+	    	if(a > b && a > c && a > d && a > e){
+		    	may = a;
+		    } else if(b > c && b > d && b > e){
+		    	may = b;
+		    } else if(c > d && c > e){
+		    	may = c;
+		    } else if(d > e){
+		    	may = d;
+		    } else {
+		    	may = e;
+		    }
+	    	return may;
+	    }
+
+	    function menor(a, b, c, d, e){
+	    	var men = 0;
+
+	    	if(a < b && a < c && a < d && a < e){
+		    	men = a;
+		    } else if(b < c && b < d && b < e){
+		    	men = b;
+		    } else if(c < d && c < e){
+		    	men = c;
+		    } else if(d < e){
+		    	men = d;
+		    } else {
+		    	men = e;
+		    }
+	    	return men;
+	    }
+
+	    function calcular(){
+	    	var arr = [];
+
+		    arr[0] = Number(document.getElementById("n1").value);
+		    arr[1] = Number(document.getElementById("n2").value);
+		    arr[2] = Number(document.getElementById("n3").value);
+		    arr[3] = Number(document.getElementById("n4").value);
+		    arr[4] = Number(document.getElementById("n5").value);
+
+		    // if(arr[0] < arr[1] && arr[0] < arr[2] && arr[0] < arr[3] && arr[0] < arr[4]){
+		    // 	may = arr[0];
+		    // } else if(arr[1] < arr[2] && arr[1] < arr[3] && arr[1] < arr[4]){
+		    // 	may = arr[1];
+		    // } else if(arr[2] < arr[3] && arr[2] < arr[4]){
+		    // 	may = arr[2];
+		    // } else if(arr[3] < arr[4]){
+		    // 	may = arr[3];
+		    // } else {
+		    // 	may = arr[4];
+		    // }
+
+		    document.getElementsByTagName("p")[0].innerHTML = "Rango: " + menor(arr[0], arr[1], arr[2], arr[3], arr[4]) + " a " + mayor(arr[0], arr[1], arr[2], arr[3], arr[4]);
+	    }
+
+	    </script>
+	</body>
+</html> 

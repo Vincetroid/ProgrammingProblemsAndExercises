@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 25</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+	</head>
+	<body onload="obtenerHora()">
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 25</h1>
+	    		<h3>Escribe un programa que toma la hora del sistema de tiempo, las convierte en palabras e imprime el resultado. En español e inglés.</h3>
+	    	</hgroup>
+	    </header>
+	    <section>
+	    	<article>
+	    		<h4>Entrada</h4>  		
+	    		<input type="number" id="num1" placeholder="Hora" onchange="establecerHora()" min="1" max="24" autofocus /><br>
+	    		<input type="number" id="num2" placeholder="Minuto" onchange="establecerHora()" min="0" max="59" />
+	        </article>	
+	    	<article style="width: 100%; height: 150px;"><!--Estilos para mantener un espacio fijo al insertar valores en este article y o afectar al otro-->
+	    		<br>
+	    		<h4>Usuario</h4>
+	    		<p id="salida"></p>
+	        </article>
+	        <article style="width: 100%; height: 150px;"><!--Estilos para mantener un espacio fijo al insertar valores en este article y o afectar al otro-->
+	    		<h4>Sistema</h4>
+	    		<p id="salidaHoraReal"></p><br>
+	    		<input type="button" value="Actualizar hora" onclick="obtenerHora()" />
+	        </article>
+	    </section>
+	    <script>
+	    function establecerHora(){
+
+	    	var op1 = document.getElementById("num1").value;
+	    	var op2 = document.getElementById("num2").value;
+
+	    	var n = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two", "thirty-three", "thirty-four", "thirty-five",  "thirty-six", "thirty-seven", "thirty-eight", "thirty-nine", "forty", "forty-one", "forty-two", "forty-three", "forty-four", "forty-five", "forty-six", "forty-seven", "forty-eight", "forty-nine", "fifty", "fifty-two", "fifty-three", "fifty-four", "fifty-five", "fifty-six", "fifty-seven", "fifty-eight", "fifty-nine"];
+
+	    	// Bloque de variables para que el usuario establezca una hora 
+	    	// DEBE HABER UN MODO DE UTILIZAR SOLO UNA FUNCION -EN VEZ DE DOS TAN PARECIDAS- CON ESTE BLOQUE DE VARIABLES Y EL DE ABAJO
+	    	var tiempo = new Date();
+	    	tiempo.setHours(op1,op2,00,000);
+	    	var h = tiempo.getHours(); // devuelve un number y en formato de 24hrs
+	    	var m = tiempo.getMinutes(); // devuelve un number y en formato de 24hrs
+	    	var text = "";
+
+	    	//Formatear de 24 a 12 hrs
+			switch(h){
+				case 13:
+					h = 1;
+					break;
+				case 14:
+					h = 2;
+					break;
+				case 15:
+					h = 3;
+					break;
+				case 16:
+					h = 4;
+					break;
+				case 17:
+					h = 5;
+					break;
+				case 18:
+					h = 6;
+					break;
+				case 19:
+					h = 7;
+					break;
+				case 20:
+					h = 8;
+					break;
+				case 21:
+					h = 9;
+					break;
+				case 22:
+					h = 10;
+					break;
+				case 23:
+					h = 11;
+					break;
+			}
+
+			//Evaluaciones de intervalos de horas y minutos para determinar el texto de salida.
+	    	if(h >= 1 && h <= 12){ //... por esto se cambió el formato en switch a 12 hrs
+	    		if(m == 0){ 
+		    		text = n[h].charAt(0).toUpperCase() + n[h].slice(1) + " o'clock"; // convierte la primera letra de una cadena a mayúscula + obtiene el resto esa cadena + texto o'clock
+		    	} else if((m >= 1 && m <= 14) || (m >= 16 && m <= 29)){ 
+		    		text = n[m].charAt(0).toUpperCase() + n[m].slice(1) + " minutes past "  + n[h]; // convierte la primera letra de una cadena a mayúscula + obtiene el resto esa cadena + minutes to + de esa hora
+		    	} else if((m >= 31 && m <= 44) || (m >= 46 && m <= 59)){
+		    		text = n[60 - m].charAt(0).toUpperCase() + n[60 - m].slice(1) + " minutes to "  + n[h + 1]; // convierte la primera letra de una cadena a mayúscula + obtiene el resto esa cadena + minutes to + la hora a la que se llegará
+		    	} else if(m == 15){
+		    		text = "Quarter past " + n[h]; // quarter past + de esa hora
+		    	} else if(m == 30){
+		    		text = "Half past " + n[h]; // half past + de esa hora
+		    	} else if(m == 45){
+		    		text = "Quarter to " + n[h + 1]; // quarter to + la hora a la que se llegará
+		    	}
+		    }
+
+	    	document.getElementById("salida").innerHTML = ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2) + "<br>" + text; // slice para formatear numeros naturales (0 a 9) a (00 a 09)
+	    }
+
+
+
+        function obtenerHora(){
+
+	    	var n = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two", "thirty-three", "thirty-four", "thirty-five",  "thirty-six", "thirty-seven", "thirty-eight", "thirty-nine", "forty", "forty-one", "forty-two", "forty-three", "forty-four", "forty-five", "forty-six", "forty-seven", "forty-eight", "forty-nine", "fifty", "fifty-two", "fifty-three", "fifty-four", "fifty-five", "fifty-six", "fifty-seven", "fifty-eight", "fifty-nine"];
+
+	    	// Bloque de variables para obtener la hora actual del sistema 
+	    	// ESTA ES LA GRAN DIFERENCIA ENTRE ESTA Y LA OTRA FUNCION, DEBE HABER OTRO DE COMBINAR ESTE BLOQUE CON EL DE ARRIBA EN UNA SOLA FUNCION
+	    	var h = new Date().getHours();
+	    	var m= new Date().getMinutes(); // devuelve un number
+	    	var text = "";
+
+	    	//Formatear de 24 a 12 hrs
+			switch(h){
+				case 13:
+					h = 1;
+					break;
+				case 14:
+					h = 2;
+					break;
+				case 15:
+					h = 3;
+					break;
+				case 16:
+					h = 4;
+					break;
+				case 17:
+					h = 5;
+					break;
+				case 18:
+					h = 6;
+					break;
+				case 19:
+					h = 7;
+					break;
+				case 20:
+					h = 8;
+					break;
+				case 21:
+					h = 9;
+					break;
+				case 22:
+					h = 10;
+					break;
+				case 23:
+					h = 11;
+					break;
+			}
+
+			//Evaluaciones de intervalos de horas y minutos para determinar el texto de salida.
+	    	if(h >= 1 && h <= 12){ //... por esto se cambió el formato en switch a 12 hrs
+	    		if(m == 0){ 
+		    		text = n[h].charAt(0).toUpperCase() + n[h].slice(1) + " o'clock"; // convierte la primera letra de una cadena a mayúscula + obtiene el resto esa cadena + texto o'clock
+		    	} else if((m >= 1 && m <= 14) || (m >= 16 && m <= 29)){ 
+		    		text = n[m].charAt(0).toUpperCase() + n[m].slice(1) + " minutes past "  + n[h]; // convierte la primera letra de una cadena a mayúscula + obtiene el resto esa cadena + minutes to + de esa hora
+		    	} else if((m >= 31 && m <= 44) || (m >= 46 && m <= 59)){
+		    		text = n[60 - m].charAt(0).toUpperCase() + n[60 - m].slice(1) + " minutes to "  + n[h + 1]; // convierte la primera letra de una cadena a mayúscula + obtiene el resto esa cadena + minutes to + la hora a la que se llegará
+		    	} else if(m == 15){
+		    		text = "Quarter past " + n[h]; // quarter past + de esa hora
+		    	} else if(m == 30){
+		    		text = "Half past " + n[h]; // half past + de esa hora
+		    	} else if(m == 45){
+		    		text = "Quarter to " + n[h + 1]; // quarter to + la hora a la que se llegará
+		    	}
+		    }
+
+	    	document.getElementById("salidaHoraReal").innerHTML = ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2) + "<br>" + text;
+	    }
+	    </script>
+	</body>
+</html>
