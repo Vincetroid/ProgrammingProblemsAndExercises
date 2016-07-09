@@ -24,10 +24,10 @@
 	    </section>
 	    <script>
 
-	    	var celsius = "<tr><td><h4>Celsius</h4></td>" + "<td><h4>Fahrenheit</h4></td></tr>";
+	    	var celsius = '<tr><td><h4>Celsius</h4></td>' + '<td><h4>Fahrenheit</h4></td></tr>';
 
 	    	for (var i = 0; i <= 100; i++) {
-	    		celsius += "<tr><td>" + i + "</td>" + "<td>" + (9 / 5 * i + 32).toFixed(1) + "</td></tr>";	 
+	    		celsius += '<tr><td>' + i + '</td>' + '<td>' + (9 / 5 * i + 32).toFixed(1) + '</td></tr>';	 
 	    	};
 	    	
 	    	document.getElementById("gradosCelsiusyFahrenheit").innerHTML = celsius;

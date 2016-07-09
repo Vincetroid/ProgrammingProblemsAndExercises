@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 29</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+	</head>
+	<body>
+	    <header>
+	    	<hgroup>
+	    		<h1>Pruebas de numeros aleatorios</h1>
+	    		<h3>Escribir un programa que permita la entrada de una cadena de texto, la divida en subcadenas y la muestre con las las mismas palabras pero en orden aleatorio.
+	    		</h3>
+	    	</hgroup>
+	    </header>
+	    <section>
+	    	<article>
+	    		<!-- value="..." es temporal, para hacer pruebas -->
+	    		<h4>Entrada</h4>
+	    		<input type="box" id="textoEntrada" placeholder="Escriba una cadena de texto" size="140" value="Eres un buen programador" autofocus/>
+	    	</article>	
+	    	<article>
+	    		<br>
+	    		<h4>Salida</h4>
+	            <p></p><!--Aqui se inserta el codigo JS-->
+	            <p></p>
+	            <p></p>
+	            <p></p>
+	        </article>
+	    </section>
+	    <script>
+
+	    var palabras = [""]; //inicializar arreglo con el primer valor string y no salga undefined
+		var i = 0; //numero de letra
+		var nPal = 0; //numero de palabra en el arreglo
+		var cadena = document.getElementById("textoEntrada").value;
+		var nuevaCadena = "";
+		var ord = [0]; //orden secuencial de palabras en enteros
+		var n = 0; //numero aleatorio inicializado en 0
+
+		//Llenar el arreglo "palabras" con las palabras suministradas en la cadena de entrada
+		do{
+			if(cadena.charAt(i) != " "){ //si hay letra...
+				palabras[nPal] += cadena.charAt(i)//agregarla a la palabra actual creandose
+			} else {
+				nPal++; //ir a la siguiente palabra
+				palabras[nPal] = ""; //indicar que sera un string la siguiente palabra para evitar undefined al imprimir 
+				ord[nPal] = nPal;
+			}
+			i++; //ir a la siguiente letra de la cadena
+		}while(i <= cadena.length);
+
+		//Randomizar el arreglo "palabras"
+		// i = 0;
+		// j = 0;
+		// do{
+		// 	n = Math.floor(Math.random() * palabras.length);
+		// 	if(funcUsados(n) === true){
+		// 		alert("El numero " + n + " ya se uso");
+		// 		palabras[j] = palabras[n];
+		// 	} else {
+		// 		alert("Nuevo numero: " + n);
+		// 		console.log(n);
+		// 		usados[j] = n;
+		// 		j++;
+		// 	}
+		// 		// nuevaCadena += palabras[j] + " ";
+		// 	i++;
+		// }while(i < palabras.length);
+
+	 //   	function funcUsados(n){
+	 //   		for (var i = 0; i < palabras.length; i++) {
+	 //   			if(usados[i] == n)
+	 //   				return true;
+	 //   		};
+	 //   	}
+
+
+		// var usados = [];
+		// var a;
+
+		// for (var i = 0; i < palabras.length; i++) {
+		// 	a = Math.floor(Math.random() * palabras.length);
+		// 	if(funcUsados(a) === true){
+		// 		alert("El numero " + a + " ya se uso");
+		// 	} else {
+		// 		alert("Nuevo numero: " + a);
+		// 		usados[i] = a;
+		// 	}
+		// };
+		
+	 //   	function funcUsados(a){
+	 //   		for (var i = 0; i < palabras.length; i++) {
+	 //   			if(usados[i] == a)
+	 //   				return true;
+	 //   		};
+	 //   	}
+
+	 	//Construir la nueva cadena de principio a fin
+		// for (var j = 0; j < palabras.length; j++) {
+		//  	nuevaCadena += palabras[j] + " ";
+		// }
+
+
+		// var newOrd = []; //Arreglo de nuevo orden de palabras
+		// var i = 0;
+		// var j = 0;
+		// //var termino = false;
+
+		// do{
+		// 	n = Math.floor(Math.random() * palabras.length);
+		// 	if(f(n) == n){
+		// 		n = Math.floor(Math.random() * palabras.length);
+				
+		// 	} else {
+		// 		newOrd[i] = n;
+		// 	}
+		// 	i++;
+		// }while(newOrd.length <= palabras.length);
+
+	 //   	function f(n){
+	 //   		for (var i = 0; i < palabras.length; i++) {
+	 //   			if(newOrd[i] == n){
+		// 			newOrd[i] = n;
+		// 			return n; 
+		// 		} else {
+					
+		// 		}
+ 	//    		}
+
+ 	   		// for (var i = 0; i < palabras.length; i++) {
+	   			// n = Math.floor(Math.random() * palabras.length);
+	   		 //    if(newOrd[i] != n) {
+	   			// 	newOrd[i] = n;
+	   			// }
+ 	   		// }
+	   		
+	   		// if(newOrd.length == palabras.length){
+	   		// 	return termino === true;
+	   		// }
+	   	//}
+
+
+
+
+		var newOrd = []; //Arreglo de nuevo orden de palabras
+		var i = 0;
+		var j = 0;
+
+		do{
+			function randomRecursivo(){
+				n = Math.floor(Math.random() * palabras.length);
+				verificar(n);
+				var codes = newCodes();
+				if(codes[0] == true){
+					newOrd[codes[2]] = codes[3];
+				} else {
+					randomRecursivo();
+				}
+			}
+		}while(newOrd.length <= palabras.length);
+
+	   	function verificar(n){
+	   		var newCodes = function(){
+	   			for (var i = 0; i < palabras.length; i++) {
+		   			if(newOrd[i] == undefined){
+		   				var bool = "true";
+			           	var pos = i;
+			           	var numA = 18;     
+			           	return [bool, pos, numA];
+			           	break;
+					}	
+				}
+	   		}
+	   	}
+
+
+
+
+
+
+		document.getElementsByTagName("p")[0].innerHTML = palabras;
+	    document.getElementsByTagName("p")[1].innerHTML = ord;
+	    document.getElementsByTagName("p")[2].innerHTML = palabras;
+	    document.getElementsByTagName("p")[3].innerHTML = newOrd;
+
+	   	// alert("Felicidades");
+	    </script>
+	</body>
+</html>

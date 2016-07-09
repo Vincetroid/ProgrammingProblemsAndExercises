@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to display the array values after the split.</p>
+
+<p id="demo"></p>
+
+<script>
+    var nuevaCadena = "";
+    var str = "How are you doing today my dear d ";
+    var res = str.split(" ");
+    var aux;
+    var j = 0;
+
+    console.log(res.length);
+
+    for (var j = 0; j < res.length; j+=2) {
+        aux = res[j];
+        res[j] = res[j+1];
+        res[j+1] = aux;
+        // console.log(j);
+    }
+
+    console.log(res.length);
+
+    if(res.length % 2 == 0){
+        res[res.length - 2] = "";
+    } else {
+        
+    }
+    console.log(res.length);
+    for (var j = 0; j < res.length; j++){
+ 	  nuevaCadena += res[j] + " ";
+    }
+
+    document.getElementById("demo").innerHTML = nuevaCadena;
+</script>
+
+</body>
+</html>

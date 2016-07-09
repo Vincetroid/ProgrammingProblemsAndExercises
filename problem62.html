@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 62</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<!-- <link rel="stylesheet" href="estilos.css" /> -->
+		<style>
+			input[type="number"]{
+				width: 50px;
+			}
+		</style>
+	</head>
+	<body>
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 62</h1>
+	    		<h3>Calcular el índice de masa corporal (IMC) a partir de la masa y altura y decir si estás obeso, normal o debajo de tu peso.
+	    		</h3>
+	    	</hgroup>
+	    </header>
+	    <section>
+	        <article>
+	        	<input type="number" min="0" max="150" step="0.1" placeholder="Peso" id="peso" autofocus>
+	        </article><br>
+	        <article>
+	        	<input type="number" min="0" max="2.5" step="0.1" placeholder="Altura" id="altura">
+	        </article>
+	        <article><br>
+	        	<input type="button" value="Calcular IMC" onclick="calcularIMC()">
+	        </article>
+	    	<article>
+	    		<br>
+	    		<h4>Salida</h4>
+	            <p id="resultado"></p>
+	        </article>
+	    </section>
+	    <script>
+
+	    function calcularIMC(){
+
+		    var masa = Number(document.getElementById("peso").value);
+		    var altura = Number(document.getElementById("altura").value);
+	    	var text = "";
+	    	var imc = masa / Math.pow(altura,2);
+
+	    	console.log("hello");
+
+	    	document.getElementById("resultado").innerHTML = "Tu IMC es de " + imc.toFixed(2);
+	    }  	
+	    
+	    </script>
+	</body>
+</html> 

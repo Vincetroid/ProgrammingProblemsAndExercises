@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Problema 61</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="Solución de problemas y ejercicios de programación del libro del autor Evan Dembskey" />
+		<meta name="keywords" content="solución, solution, programming, programación, ejercicios, exercises, coding, code, learn">
+		<link rel="stylesheet" href="estilos.css" />
+	</head>
+	<body>
+	    <header>
+	    	<hgroup>
+	    		<h1>Problema 61</h1>
+	    		<h3>Número de pasos que toma obtener la Constante de Kaprekar (495) a partir de un número de 3 dígitos.
+	    		</h3>
+	    	</hgroup>
+	    </header>
+	    <section>
+	        <article>
+	        	<input type="number" min="1" placeholder="Número" id="numUno" onchange="aplicarAlgoritmo()" autofocus>
+	        </article>
+	    	<article>
+	    		<br>
+	    		<h4>Salida</h4>
+	            <p></p>
+	        </article>
+	    </section>
+	    <script>
+
+	    function aplicarAlgoritmo(){
+		    var num = Number(document.getElementById("numUno").value);
+		    //alert(typeof num);
+		    var numText = "";
+		    numText = num.toString();
+
+		    if(numText.length != 3){
+		    	alert("El número debe ser de 3 cifras: ");
+		    }
+		    //else if(numText[0] == 0 || numText[1] == 0 || numText[2] == 0){
+		    //	alert("Cuide que ninguna cifra sea cero");
+		    //}
+
+		    //la última condición es porque JS hace iguales a todos si la última cifra es cero ¿por qué? 
+		    else if(numText.charAt(0) == numText.charAt(1) == numText.charAt(2) && numText.charAt(2) != 0){
+		    	alert("Las 3 cifras son iguales. Introduzca cifras diferentes: " + numText.charAt(0) + " " + numText.charAt(1) + " " + numText.charAt(2) + " " + numText.charCodeAt(2));
+		    } else if(numText[0] == numText[1] || numText[0] == numText[2] || numText[1] == numText[2]){
+		    	alert("2 cifras son iguales. Asegurese que las cifras sean diferentes");
+		    } else {
+				var res = 0;
+		   		var cifras = 3;
+		   		var d1 = 0, d2 = 0;
+		   		var n1 = "", n2 = "", n3 = "";
+		   		var text = "";
+				d1 = num;
+		   		
+		    debugger;
+		   		// ¿texto no termina en 495? y
+		   		// ¿el resultado es de 3 cifras?
+		   		// si ambos son ciertos, continuar
+		   		while( (!text.endsWith("495")) && (cifras == 3)){
+		   			n1 = numText[0];
+		   			n2 = numText[1];
+		   			n3 = numText[2];
+
+		   			d2 = obtenerd2(n1,n2,n3);
+
+				    if(d1 > d2){
+				    	if(res == 189 || res == 198 || res == 981 || num == 189 || num == 198 || num == 981){
+				    		text += 918 + " - " + 189 + " = " + 729 + "<br>";
+				    		text += 792 + " - " + 297 + " = " + 495;
+				    		document.getElementsByTagName("p")[0].innerHTML =  text;	
+						} else if(res == 702 || res == 207 || res == 270 || num == 702 || num == 207 || num == 270){
+				    		text += 702 + " - " + 207 + " = " + 495;
+				    		document.getElementsByTagName("p")[0].innerHTML =  text;		
+						} else if(res == 813 || res == 318 || num == 813 || num == 318){
+							text += 813 + " - " + 318 + " = " + 495;
+				    		document.getElementsByTagName("p")[0].innerHTML =  text;
+						} else {
+					    	res = d1 - d2;
+					    	text += d1 + " - " + d2 + " = " + res + "<br>";
+					    	document.getElementsByTagName("p")[0].innerHTML =  text;
+					    	d1 = res; // el nuevo d1
+							numText = res.toString(); //el nuevo d2
+						}
+				    }else{
+				    	if(res == 189 || res == 198 || res == 981 || num == 189 || num == 198 || num == 981){
+				    		text += 918 + " - " + 189 + " = " + 729 + "<br>";
+				    		text += 792 + " - " + 297 + " = " + 495;
+				    		document.getElementsByTagName("p")[0].innerHTML =  text;	
+						} else if(res == 702 || res == 207 || res == 270 || num == 702 || num == 207 || num == 270){
+				    		text += 702 + " - " + 207 + " = " + 495;
+				    		document.getElementsByTagName("p")[0].innerHTML =  text;		
+						} else if(res == 813 || res == 318 || num == 813 || num == 318){
+							text += 813 + " - " + 318 + " = " + 495;
+				    		document.getElementsByTagName("p")[0].innerHTML =  text;
+						} else {
+					    	res = d2 - d1;
+				    		text += d2 + " - " + d1 + " = " + res + "<br>";
+					    	document.getElementsByTagName("p")[0].innerHTML =  text;
+							d1 = res; // el nuevo d1
+							numText = res.toString(); //el nuevo d2
+						}
+				    }
+				    cifras = longitudNumero(res);
+				}
+		    }
+	    }  	
+
+	    function longitudNumero(numero){
+	    	// alert("La longitud de res es " + numero.toString().length);
+	    	return numero.toString().length;
+	    }
+
+	    function obtenerd2(nu1,nu2,nu3){
+	    	var aux1 = 0;
+			var aux2 = 0;
+	    	aux1 = nu1;
+			aux2 = nu2;
+			nu1 = nu3;
+			nu2 = aux1;
+			nu3 = aux2;
+			if(nu3 == 0){
+				
+			}
+		    return Number(nu1 + nu2 + nu3);
+	    }
+	    
+	    </script>
+	</body>
+</html> 

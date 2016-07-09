@@ -1,0 +1,42 @@
+hacer{
+	funcion(){
+		nuevo numero aleatorio
+		verificar()
+		var codes = newCodes();
+	**	si(codes[0] == true){
+			asignar ese numero, es decir, codes[3] al nuevoArreglo[codes[2]]
+		} si no {
+			llamar a funcion()
+		}
+	}
+}(mientras la longitud del nuevoArreglo[] sea menor o igual a la longitud del arreglo de palabras)
+
+** //verifica si no hay nada en el nuevoArreglo[] o no se repite un num
+verificar(){  
+	
+	var newCodes = function(){  
+	    for(de 0 hasta la longitud del arreglo de palabras (4)){
+	       si(tal numero aleatorio no es igual a alguno en nuevoArreglo[]){
+	           var bool = "true";
+	           var pos = i;
+	           var numA = 18;     
+	           return [bool, pos, numA];
+	       }  
+	    }
+	};
+
+	for(de 0 hasta la longitud del arreglo de palabras (4)){
+		si(tal numero aleatorio no es igual a alguno en nuevoArreglo[]){
+			 return [bool, pos, numA];
+		}
+	}
+}
+
+
+
+
+Then you can access them like so:
+
+var codes = newCodes();
+codes[0];
+codes[1];
