@@ -24,11 +24,21 @@
 	        </article>
 	    </section>
 	    <script>
-	    	var text = "";
-	   		for (var i = 0; i < 10; i++)
-	   			text += "*" + "<br>"; 
 
-			document.getElementsByTagName("p")[0].innerHTML = text;
+	    	var asterisco = {
+	    		"text":"",
+
+	    		"desplegarVerticalmente": function() {
+
+	    			for (var i = 0; i < 10; i++)
+	   				asterisco.text += "*" + "<br>"; 
+
+					document.getElementsByTagName("p")[0].innerHTML = asterisco.text;
+	    		}
+	    	};
+
+	    	asterisco.desplegarVerticalmente();
+
 	    </script>
 	</body>
 </html>

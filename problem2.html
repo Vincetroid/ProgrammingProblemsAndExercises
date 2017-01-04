@@ -24,10 +24,14 @@
 	            <p id="parrafo2"></p>
 	        </article>
 	    </section>
+	    
 	    <script>
-	    	document.getElementById("parrafo").innerHTML = "¡Hola mundo!";
-	    	document.getElementById("parrafo2").innerHTML = "¡Lo estoy haciendo bien!";
-	    	alert("¡Hola mundo! \n¡Lo estoy haciendo bien!");
+
+	    	var text = '{ "mensajes" : [ {"saludo":"¡Hola mundo!", "animo":"¡Lo estoy haciendo bien!"} ] }';
+	    	var msg = JSON.parse(text);
+
+	    	document.getElementById("parrafo").innerHTML = msg.mensajes[0].saludo;
+	    	document.getElementById("parrafo2").innerHTML = msg.mensajes[0].animo;
 	    </script>
 	</body>
 </html>

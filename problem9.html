@@ -20,7 +20,7 @@
 	    		<h4>Especifique la longitud de astericos por lado: </h4>
 	    		<form id="form">
 	    			<input type="number" id="numAsteriscos" min="0" max="80" value="0" style="width:50px; text-align:center;"/>
-	    			<input type="button" value="Mostrar" onclick="desplegarAsteriscos()">
+	    			<input type="button" value="Mostrar" onclick="asterix.desplegarAsteriscos()">
 	    		</form>
 	    	</article>	
 	    	<article>
@@ -30,21 +30,25 @@
 	    </section>
 	    <script>
 			
-			function desplegarAsteriscos(){
-				var text = "";
-				var numAst = document.getElementById("numAsteriscos").value;
+			var asterix = {
+				"text":"",
 
-				for (var i = 1; i <= numAst; i++){ //FILAS
-		   			for (var j = 1; j <= numAst; j++) { //Imprime n numero de asteriscos especificados en el limite sup del bucle. COLUMNAS
-		   				text += "*";
+				"desplegarAsteriscos": function (){
+
+					var numAst = document.getElementById("numAsteriscos").value;
+
+					for (var i = 1; i <= numAst; i++){ //FILAS
+			   			for (var j = 1; j <= numAst; j++) { //Imprime n numero de asteriscos especificados en el limite sup del bucle. COLUMNAS
+			   				asterix.text += "*";
+			   			}
+		   				asterix.text += "<br>"; //Inserta un salto de linea cuando termina de imprimir la línea de asteriscos
 		   			}
-	   				text += "<br>"; //Inserta un salto de linea cuando termina de imprimir la línea de asteriscos
-	   			}
 
-	   			document.getElementsByTagName("p")[0].innerHTML = text;
-			}
+	   				document.getElementsByTagName("p")[0].innerHTML = asterix.text;
+				}
+			};
 
-			
+
 	    </script>
 	</body>
 </html>

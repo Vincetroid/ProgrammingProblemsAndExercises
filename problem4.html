@@ -24,13 +24,22 @@
 	        </article>
 	    </section>
 	    <script>
-	    	var i;
-	    	var text = "";
 
-	    	for (var i = 0; i < 10; i++)
-	    		text += "*";
+	    	var asterix = { 
+	    		"text":"", 
 
-	    	document.getElementById("parrafo").innerHTML = text;
+	    		"desplegar": function(){ 
+
+	    			// var text = "";
+
+			    	for (var i = 0; i < 10; i++)
+			    		asterix.text += "*";
+
+			    	return asterix.text;
+	    		}
+	    	}; 
+
+	    	document.getElementById("parrafo").innerHTML = asterix.desplegar();
 	    </script>
 	</body>
 </html>

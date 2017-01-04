@@ -24,11 +24,22 @@
 	        </article>
 	    </section>
 	    <script>
-	    	var sum = 0;
-	   		for (var i = 1; i <= 10; i++)
-	   			sum += i; 
 
-			document.getElementsByTagName("p")[0].innerHTML = sum;
+	    	var sum = {
+	    		"res":0,
+
+	    		"sumar": function() {
+
+	    			// var res = 0;
+
+			   		for (var i = 1; i <= 10; i++)
+			   			sum.res += i; 
+
+			   		return sum.res;
+	    		}
+	    	}; 
+
+			document.getElementsByTagName("p")[0].innerHTML = sum.sumar();
 	    </script>
 	</body>
 </html>

@@ -34,7 +34,7 @@
 	        		<li>El patrimonio neto de una persona 		  <input class="derecha" type="text"  /></li>
 	        		<li>La distancia a una estrella en km 		  <input class="derecha" type="text"  /></li>
 	        		<li>La distancia a una estrella en años luz   <input class="derecha" type="text"  /></li>
-	        		<li><input type="button" class="derecha" onclick="desplegarTipos()" value="Desplegar lo almacenado en for" /></li>
+	        		<li><input type="button" class="derecha" onclick="tipos.desplegar()" value="Desplegar lo almacenado en for" /></li>
 	        		</form>
 	        	</ul>
 	        	</p>
@@ -47,16 +47,24 @@
 	    	</article>	
 	    </section>
 	    <script>
-	    	var i;
-	    	var text = "";
-	    	var sortOfData = document.getElementById("form"); //Obtener el form incluyendo los inputs
 
-	    	function desplegarTipos(){
-	    		for (var i = 0; i < sortOfData.length - 1; i++) // -1 para no mostrar el ultimo input (Desplegar lo almacenado en for)
-	    			text += "<li>" + sortOfData.elements[i].value + "</li>"; 
+	    	var tipos = { 
+	    		"text":"",
 
-				document.getElementsByClassName("elemento-lista")[0].innerHTML = text; //text fue almacenando toda la lista para desplegar dentro de la clase elemento-lista, o sea dentro de <ul>. El [0] es porque se fija en el primer elemento con ese nombre de clase (elemento-lista)
-	    	}
+		    	"desplegar": function(){
+
+		    		var sortOfData = document.getElementById('form'); //Obtener el form incluyendo los inputs
+
+		    		for (var i = 0; i < sortOfData.length - 1; i++) // -1 para no mostrar el ultimo input (Desplegar lo almacenado en for)
+		    			tipos.text += "<li>" + sortOfData.elements[i].value + "</li>"; 
+
+					document.getElementsByClassName("elemento-lista")[0].innerHTML = tipos.text; //text fue almacenando toda la lista para desplegar dentro de la clase elemento-lista, o sea dentro de <ul>. El [0] es porque se fija en el primer elemento con ese nombre de clase (elemento-lista)
+
+					tipos.text = ""; //Limpiar
+		    	}
+		    	    		
+	    	};
+
 
 	    </script>
 	</body>

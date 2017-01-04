@@ -20,7 +20,7 @@
 	    		<h4>Especifique un número:</h4>
 	    		<form id="form">
 	    			<input type="number" id="num" min="0" max="9" value="0" style="width:50px; text-align:center;"/>
-	    			<input type="button" value="Convertir" onclick="mostrarNumero()">
+	    			<input type="button" value="Convertir" onclick="n.mostrar()">
 	    		</form>
 	    	</article>	
 	    	<article>
@@ -30,50 +30,53 @@
 	    </section>
 	    <script>
 			
-			function mostrarNumero(){
-				var text = "";
-				var numSeleccionadoString = document.getElementById("num").value;
-				var numSeleccionado = Number(numSeleccionadoString);
-				
-				switch(numSeleccionado){
-					case 0:
-						text = "Cero";
-						break;
-					case 1:
-						text = "Uno";
-						break;
-					case 2:
-						text = "Dos";
-						break;
-					case 3:
-						text = "Tres";
-						break;
-					case 4:
-						text = "Cuatro";
-						break;
-					case 5:
-						text = "Cinco";
-						break;
-					case 6:
-						text = "Seis";
-						break;
-					case 7:
-						text = "Siete";
-						break;
-					case 8:
-						text = "Ocho";
-						break;
-					case 9:
-						text = "Nueve";
-						break;
-					default:
-						text = "Error";
-						break;
+			var n = {
+				"text":"",
+
+				"mostrar": function() {
+
+					var numSeleccionadoString = document.getElementById("num").value;
+					var numSeleccionado = Number(numSeleccionadoString);
+					
+					switch(numSeleccionado){
+						case 0:
+							num.text = "Cero";
+							break;
+						case 1:
+							num.text = "Uno";
+							break;
+						case 2:
+							num.text = "Dos";
+							break;
+						case 3:
+							num.text = "Tres";
+							break;
+						case 4:
+							num.text = "Cuatro";
+							break;
+						case 5:
+							num.text = "Cinco";
+							break;
+						case 6:
+							num.text = "Seis";
+							break;
+						case 7:
+							num.text = "Siete";
+							break;
+						case 8:
+							num.text = "Ocho";
+							break;
+						case 9:
+							num.text = "Nueve";
+							break;
+						default:
+							num.text = "Error";
+							break;
+					}
+
+	   				document.getElementsByTagName("p")[0].innerHTML = num.text;
 				}
-
-	   			document.getElementsByTagName("p")[0].innerHTML = text;
-			}
-
+			};
 			
 	    </script>
 	</body>
